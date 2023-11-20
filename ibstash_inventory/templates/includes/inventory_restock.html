@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load django_tables2 %}
+{% load static %}
+
+{% block content %}
+<div class="page-heading">
+    <iframe name="correct_matching_frame" style="display:none;"></iframe>
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>{{ segment }} Page</h3>
+            </div>
+        </div>
+    </div>
+    {% if filter %}
+             {% include 'V1/generic/filter.html' with filter=filter helper=helper create_url=create_url %}
+    {% endif %}
+    <!-- Basic Tables start -->
+    <section class="section">
+        <div class="card" style="margin-top:1.6%;">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-10">
+                        <h5 class="card-title">
+                            {{ segment }} table
+                        </h5>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-success" id="addRowButton2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            Restock</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/api/restock_inventory" target="correct_matching_frame" id="formRestockTable">
+                    {% csrf_token %}
+                    {% render_table table %}
+                </form>
+            </div>
+        </div>
+
+    </section>
+    <!-- Basic Tables end -->
+
+</div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'assets/extensions/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/extensions/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js' %}"></script>
+    <script src="{% static 'assets/js/pages/datatables.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#addRowButton2').click(function (e) {
+                var form = document.getElementById("formRestockTable");
+                form.submit(function (e) {
+                });
+                window.location.reload();
+            });
+        });
+    </script>
+{% endblock scripts%}

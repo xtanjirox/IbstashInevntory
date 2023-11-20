@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>{{ segment }} Page</h3>
+            </div>
+        </div>
+    </div>
+    {% if filter %}
+             {% include 'V1/generic/filter.html' with filter=filter helper=helper create_url=create_url %}
+    {% endif %}
+    <!-- Basic Tables start -->
+    <section class="section">
+        <div class="col-12" style="margin-top:1.6%;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Insert new {{ segment }}</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form action="" method="post" class="form form-vertical">
+                                {% crispy form %}
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <button type="reset"
+                                                class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                        </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+    <!-- Basic Tables end -->
+
+</div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'assets/extensions/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/extensions/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js' %}"></script>
+    <script src="{% static 'assets/js/pages/datatables.js' %}"></script>
+{% endblock scripts%}
