@@ -20,7 +20,3 @@ def generate_qr_code(hash_code):
     draw.text((30, 10), hash_code, fill=(0, 0, 0))
     background.save('out.png')
     return img
-
-    #img = img.resize((472, 354))
-    #img.save(hash_code+'.png')
-    # im1.save("out.pdf", save_all=True, append_images=[im2, im3])

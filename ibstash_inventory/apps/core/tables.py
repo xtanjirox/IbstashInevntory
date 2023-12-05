@@ -66,8 +66,16 @@ class InventoryDetailTable(tables.Table):
         attrs = {"class": "table", "id": "table2"}
 
 
+FUNC_DETAIL_BUTTON_TEMPLATE = """
+        <a href="/api/generate_code/{{record.inventory.id}}/{{record.id}}" class="btn icon btn-primary" title="Generated"><i class='fas fa-pencil-alt'></i></a>
+        <a href="/api/stick_code/{{record.inventory.id}}/{{record.id}}" class="btn icon btn-warning" title="Sticked"><span class="fa-fw select-all fas"></span></a>
+        <a href="/api/ship_code/{{record.inventory.id}}/{{record.id}}" class="btn icon btn-success" title="Shipped"><span class="fa-fw select-all fas"></span></a>
+        <a href="/api/return_code/{{record.inventory.id}}/{{record.id}}" class="btn icon btn-danger" title="Return"><i class="bi bi-arrow-counterclockwise"></i></a>
+"""
+
+
 class BarCodeTable(tables.Table):
-    detail = tables.TemplateColumn(DETAIL_BUTTON_TEMPLATE)
+    detail = tables.TemplateColumn(FUNC_DETAIL_BUTTON_TEMPLATE)
 
     class Meta:
         orderable = False

@@ -3,10 +3,10 @@ from django.urls import reverse_lazy
 
 
 class BarCodeStatus(models.IntegerChoices):
-    GENERATED = 0, 'generated'
-    STICKED = 1, 'sticked'
-    SHIPPED = 2, 'shipped'
-    RETURNED = 3, 'returned'
+    GENERATED = 0, 'Generated'
+    STICKED = 1, 'Sticked'
+    SHIPPED = 2, 'Shipped'
+    RETURNED = 3, 'Returned'
 
 
 class Size(models.Model):
@@ -75,3 +75,4 @@ class BarCode(models.Model):
 
     class Meta:
         db_table = 'barcode'
+
