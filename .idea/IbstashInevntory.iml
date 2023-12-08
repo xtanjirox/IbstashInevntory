@@ -6,8 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/ibstash_inventory" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ibstash_inventory/apps/api" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ibstash_inventory/apps" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ibstash_inventory/apps/core" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
-      <excludeFolder url="file://$MODULE_DIR$/ibstash_inventory/apps/core" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11 (IbstashInevntory)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

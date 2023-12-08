@@ -1,6 +1,6 @@
 import hashlib
 import qrcode
-from PIL import Image, ImageDraw, ImageFont #Save and display the image
+from PIL import Image, ImageDraw
 
 
 def generate_code(product_name, product_size, product_number):
@@ -18,5 +18,5 @@ def generate_qr_code(hash_code):
     background.paste(img, offset)
     draw = ImageDraw.Draw(background)
     draw.text((30, 10), hash_code, fill=(0, 0, 0))
-    background.save('out.png')
+    background.save(f'code_qr/{hash_code}.png')
     return img

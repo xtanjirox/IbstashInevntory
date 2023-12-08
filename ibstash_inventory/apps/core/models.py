@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse_lazy
-
+from datetime import datetime
 
 class BarCodeStatus(models.IntegerChoices):
     GENERATED = 0, 'Generated'
@@ -72,6 +72,7 @@ class BarCode(models.Model):
     inventory = models.ForeignKey(Inventory, on_delete=models.DO_NOTHING)
     barcode = models.CharField(max_length=20, default='HELLO CODE')
     barcode_status = models.IntegerField(choices=BarCodeStatus.choices)
+    generated_date = models.DateTimeField(default=datetime.now())
 
     class Meta:
         db_table = 'barcode'

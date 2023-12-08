@@ -33,6 +33,7 @@ def generate_code(request, inventory_id: int, item_id: int):
     item = models.BarCode.objects.get(pk=item_id)
     item.barcode_status = models.BarCodeStatus.GENERATED
     item.save()
+    _ = utils.generate_qr_code(item.barcode)
     return redirect(f'/barcode/detail/{inventory_id}')
 
 
